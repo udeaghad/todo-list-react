@@ -1,29 +1,31 @@
-import React, { useState } from "react"
-import { FaPlusCircle } from "react-icons/fa"
+import React, { useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 
-const InputTodo = props => {
+const InputTodo = (props) => {
   const [inputText, setInputText] = useState({
-    title: "",
-  })
+    title: '',
+  });
 
-  const onChange = e => {
+  const { addTodoProps } = props;
+
+  const onChange = (e) => {
     setInputText({
       ...inputText,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (inputText.title.trim()) {
-      props.addTodoProps(inputText.title)
+      addTodoProps(inputText.title);
       setInputText({
-        title: "",
-      })
+        title: '',
+      });
     } else {
-      alert("Please write item")
+      alert('Please write item');
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
@@ -35,15 +37,15 @@ const InputTodo = props => {
         name="title"
         onChange={onChange}
       />
-      <button className="input-submit">
-  <FaPlusCircle
-    style={{ color: "darkcyan", fontSize: "20px", marginTop: "2px" }}
-  />
-</button>
+      <button type="button" className="input-submit">
+        <FaPlusCircle
+          style={{ color: 'darkcyan', fontSize: '20px', marginTop: '2px' }}
+        />
+      </button>
     </form>
-  )
-}
-//For different input fields
+  );
+};
+// For different input fields
 // const InputTodo = props => {
 //   const [inputText, setInputText] = useState({
 //     fName: "",
@@ -93,8 +95,7 @@ const InputTodo = props => {
 //   )
 // }
 
-
-//Using class component
+// Using class component
 // class InputTodo extends Component {
 //  state = {
 //     title: ""
@@ -108,25 +109,25 @@ const InputTodo = props => {
 
 //  handleSubmit = e => {
 //     e.preventDefault();
-//     if(this.state.title.trim()){ 
+//     if(this.state.title.trim()){
 //     this.props.addTodoProps(this.state.title)
 //     this.setState({
 //         title: ''
 //     })
 // }else {
 //     alert('Please write an item')
-// } 
+// }
 
 //  }
 
 //   render() {
 //     return (
 //       <form onSubmit={this.handleSubmit} className="form-container">
-//         <input type="text" 
-//         placeholder="Add Todo..." 
+//         <input type="text"
+//         placeholder="Add Todo..."
 //         className="input-text"
-//         value={this.state.title} 
-//         onChange={this.onChange} 
+//         value={this.state.title}
+//         onChange={this.onChange}
 //         name='title'
 //         />
 //         <button className="input-submit">Submit</button>
@@ -134,4 +135,4 @@ const InputTodo = props => {
 //     )
 //   }
 // }
-export default InputTodo
+export default InputTodo;
